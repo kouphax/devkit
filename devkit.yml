@@ -10,11 +10,6 @@
       homebrew:
         name: "{{item}}"
       with_items: "{{brews}}"
-    - name: install homebrew casks
-      homebrew_cask:
-        name: "{{item}}"
-        state: present
-      with_items: "{{casks}}"
     - name: install gems
       sudo: yes
       gem:

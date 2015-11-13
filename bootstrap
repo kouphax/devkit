@@ -6,4 +6,4 @@ echo "Provisioning workspace"
 ansible-playbook -i "localhost," -c local devkit.yml
 
 bundle install
-rake spec
+bundle exec rake spec
