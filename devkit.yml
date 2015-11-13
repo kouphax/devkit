@@ -1,0 +1,40 @@
+---
+- hosts: all
+  vars_files:
+    - devkit-vars.yml
+  tasks:
+    - name: update homebrew
+      homebrew:
+        update_homebrew: yes
+    - name: install brews
+      homebrew:
+        name: "{{item}}"
+      with_items: "{{brews}}"
+    - name: install homebrew casks
+      homebrew_cask:
+        name: "{{item}}"
+        state: present
+      with_items: "{{casks}}"
+    - name: install gems
+      sudo: yes
+      gem:
+        name: "{{item}}"
+        state: latest
+      with_items: "{{gems}}"
+    - name: install npms
+      npm:
+        name: "{{item}}"
+        global: yes
+      with_items: "{{npms}}"
+    - name: get java library security folder
+      shell: echo $(/usr/libexec/java_home)/jre/lib/security
+      register: java_lib_sec
+    - name: copy files to java lib_sec
+      copy:
+        src: "{{item}}"
+        dest: "{{java_lib_sec.stdout}}"
+      sudo: yes
+      with_items:
+        - files/jce/local_policy.jar
+        - files/jce/US_export_policy.jar
+

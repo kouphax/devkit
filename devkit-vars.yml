@@ -1,0 +1,40 @@
+---
+repos:
+  - dcj-admin
+  - dcj-copy-editor
+  - dcj-copy-editor-server
+  - dcj-end-to-end-tests
+  - dcj-infra
+  - dcj-operations
+  - dcj-payments
+  - dcj-product-catalogue
+  - dcj-release-tools
+  - dcj-submission
+  - homeoffice-cjp
+  - homeoffice-cjp-data
+static_scripts:
+  - status.sh
+  - watch-status.sh
+  - start.sh
+  - in_case_of_emergency.sh
+procfiles:
+  - all
+  - all-but-customer
+  - stubs-only
+gems:
+  - bundler
+  - foreman
+  - mailcatcher
+  - compass
+  - bson_ext
+  - genghisapp
+  - sass-lint
+brews:
+  - sassc
+  - caskroom/cask/brew-cask
+  - npm
+casks:
+  - virtualbox
+  - vagrant
+npms:
+  - grunt-cli
