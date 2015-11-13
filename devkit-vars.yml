@@ -28,7 +28,7 @@ gems:
   - compass
   - bson_ext
   - genghisapp
-  - sass-lint
+  - sasslint
 brews:
   - sassc
   - caskroom/cask/brew-cask
